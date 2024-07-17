@@ -15,7 +15,7 @@ function App() {
   }, [])
 
   return (
-    <div className='container'>
+    <div className='uppercase border border-slate-500'>
       <div>Here is the listed data:</div>
       <div>{backendData.message}</div>
     </div>
