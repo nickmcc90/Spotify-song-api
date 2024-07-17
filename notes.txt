@@ -51,4 +51,63 @@ Seems like the proxy thing isn't working.
 Everything works! We can have a React app with Vite while using an express backend.
 We don't have to set up an html css js only file that calls the api with scripts.
 
+Here's template code for retrieving info from the backend:
+
+  const [backendData, setbackendData] = useState([{}])
+
+  useEffect(() => {
+    async function grabBackend() {
+      const res = await fetch('http://localhost:5000/api')
+      const data = await res.json()
+      setbackendData(data)
+    }
+    grabBackend()
+  }, [])
+
 Now on to actually creating the application...
+
+WIPS project tree.
+---
+
+Frontend
+- Navbar
+  - Nice design
+  - Smooth window scrolling of window to each section
+- Landing page
+  - Nice design
+  - Home route
+- Check status of API key
+  - Nice design
+- Updates section
+  - Nice design
+- How it works section
+  - Nice design
+- Choose your vibe section
+  - Nice design
+  - Changing css styling upon interacting
+  - state variables assigned after interactions
+- Choose your plan section
+  - Nice design
+  - action step to checkout with Stripe
+  - correct variables sent to backend after checkout
+- Reviews section
+  - Nice design
+- Footer section
+  - Nice design
+
+Backend
+- Installment of tailwindcss
+- Routing set up
+- Firebase firestore set up and export
+  - Credentials in environment and it works
+  - correct information sent to firebase after checkouts
+  - correct retrieval of information after requesting API key
+  - correct retrieval of information upon user executing an API key
+  - correct updating of information upon API key usage
+  - correct updating of information upon API key cancellation
+- Stripe set up
+  - Credentials in enviornment and it works
+  - post method checkout working
+    - grabbing deciding variables from queries
+    - assigning api key in success url
+  - Correct delegation of prepaid and subscription based keys.
