@@ -1,0 +1,54 @@
+Git init
+
+1. Create server and client folder
+
+Server file----
+1. cd into server file
+2. npm init -y
+3. Change "main" to server.js
+4. Make server.js file
+5. Install express
+6. install nodemon
+7. Make a "start" node server
+Also "dev" nodemon server
+
+Client file----
+1. cd to client file
+2. npm create vite@latest . (dot is for current directory)
+3. Go into App.css, remove everything
+4. Go into App.jsx, remove everything and type rfce
+
+Backend setup---
+1. EAPL setup. React will be default listening on 3000, server we
+will choose to listen on 5000.
+2. Create a simple get route that returns json
+3. cd to the server folder
+4. npm run dev
+5. Navigate to browser and do localhost:5000/api or whatever your route is
+6. Verify that it works.
+7. npm i cors 
+8. Put the require cors thing at the top of your server.
+
+Frontend setup---
+Main jist: useEffect to grab the data from the api, then
+store it in a state variable, finally display this variable.
+1. Go into the package.json for the client and put
+"proxy": "http://localhost:500"
+This makes relative api requests and removes cross origin problems.
+2. import useEffect and useState into the react app.
+3. create the useState variable
+4. create the useEffect and fetch the api route defined. We can
+use a relative path like '/api' inside fetch because we set up the proxy.
+5. Set the fetched data to the state variable
+6. npm i (within the client folder)
+7. Open up another terminal and npm run dev in the client folder
+8. The message from the api should appear in network > preview > object tree
+
+** For some reason the client can only grab data from the api backend when it fetches
+the direct route to the api i.e. 'http://localhost:5000/api' instead of just '/api'.
+Seems like the proxy thing isn't working. 
+
+Everything works! We can have a React app with Vite while using an express backend.
+We don't have to set up an html css js only file that calls the api with scripts.
+
+Now on to actually creating the application...
