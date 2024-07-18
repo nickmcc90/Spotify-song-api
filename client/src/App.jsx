@@ -11,14 +11,14 @@ function App() {
 
   const [backendData, setbackendData] = useState([{}])
 
-  useEffect(() => {
-    async function grabBackend() {
-      const res = await fetch('http://localhost:5000/api')
-      const data = await res.json()
-      setbackendData(data)
-    }
-    grabBackend()
-  }, [])
+  // useEffect(() => {
+  //   async function grabBackend() {
+  //     const res = await fetch('http://localhost:5000/api')
+  //     const data = await res.json()
+  //     setbackendData(data)
+  //   }
+  //   grabBackend()
+  // }, [])
 
   return (
     <>

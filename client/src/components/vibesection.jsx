@@ -1,12 +1,13 @@
 import React, { useRef, useState } from 'react'
 
+
 function VibeSection() {
 
   const firstvibe = useRef()
   const secondvibe = useRef()
   const thirdvibe = useRef()
 
-  const [vibe, setVibe] = useState("piano")
+  const [vibeTile, setVibeTile] = useState("piano")
 
   const handleScrollToFirst = () => {
     firstvibe.current.scrollIntoView({
@@ -15,7 +16,7 @@ function VibeSection() {
       inline: 'center'
     })
 
-    setVibe("piano")
+    setVibeTile("piano")
   }
 
   const handleScrollToSecond = () => {
@@ -24,7 +25,7 @@ function VibeSection() {
       block: 'nearest',
       inline: 'center'
     })
-    setVibe("tech")
+    setVibeTile("tech")
   }
 
   const handleScrollToThird = () => {
@@ -33,26 +34,45 @@ function VibeSection() {
       block: 'nearest',
       inline: 'center'
     })
-    setVibe("baddy")
+    setVibeTile("baddy")
   }
 
 
   return (
-    <div className='flex flex-col max-w-[1000px] mx-auto gap-5 py-[75px]'>
+    <div className='flex flex-col max-w-[400px] mx-auto gap-5 py-[75px]'>
+      <div className='uppercase flex justify-center text-2xl sm:text-3xl xl-4xl font-bold text-white'>Choose your vibe</div>
       <div className='flex items-center justify-between flex-nowrap w-[100%]'>
-        <div className='flex items-center my-5 mx-auto border border-slate-300 overflow-auto flex-none w-[100%]
-        h-[128px] flex-nowrap overflow-y-hidden overflow-x-hidden snap-mandatory snap-x scroll-smooth'>
-          <div ref={firstvibe} className='snap-center w-[100%] text-center flex-none'>1</div>
-          <div ref={secondvibe} className='snap-center w-[100%] text-center flex-none'>2</div>
-          <div ref={thirdvibe} className='snap-center w-[100%] text-center flex-none'>3</div>
+        <div className='flex items-center my-5 mx-auto border overflow-auto flex-none w-[100%]
+        h-[400px] flex-nowrap overflow-y-hidden overflow-x-hidden snap-mandatory snap-x scroll-smooth
+        bg-black'>
+          <div ref={firstvibe} className='snap-center w-[100%] text-center flex-none text-white'>
+            <div className="uppercase text-blue-500 text-3xl sm:text-4xl xl:text-5xl font-semibold py-6">Piano</div>
+            <div className='font-thin mt-6 text-lg'>
+              <div>Melodic upbeat chord progressions</div>
+              <div>Interesting funky rhythms</div>
+            </div>
+            <div className='py-6 text-lg'>
+              <div className='font-semibold'>Think:</div>
+              <div className='font-thin'>
+                <div>Club</div>
+                <div>Workout</div>
+              </div>
+            </div>
+          </div>
+          <div ref={secondvibe} className='snap-center w-[100%] text-center flex-none text-white flex-col'>
+            2
+          </div>
+          <div ref={thirdvibe} className='snap-center w-[100%] text-center flex-none text-white flex-col'>
+            3
+          </div>
         </div>
       </div>
       <div className='flex gap-5 justify-center'>
-        <button className={`h-3 w-3 rounded-full ${vibe === "piano" ?  'bg-blue-500' : 'bg-slate-700'}`} 
+        <button className={`h-3 w-3 rounded-full ${vibeTile === "piano" ?  'bg-blue-500' : 'bg-slate-700'}`} 
         onClick={handleScrollToFirst}></button>
-        <button className={`h-3 w-3 rounded-full ${vibe === "tech" ?  'bg-green-500' : 'bg-slate-700'}`} 
+        <button className={`h-3 w-3 rounded-full ${vibeTile === "tech" ?  'bg-green-500' : 'bg-slate-700'}`} 
         onClick={handleScrollToSecond}></button>
-        <button className={`h-3 w-3 rounded-full ${vibe === "baddy" ?  'bg-violet-500' : 'bg-slate-700'}`} 
+        <button className={`h-3 w-3 rounded-full ${vibeTile === "baddy" ?  'bg-[#c32bff]' : 'bg-slate-700'}`} 
         onClick={handleScrollToThird}></button>
       </div>
     </div>

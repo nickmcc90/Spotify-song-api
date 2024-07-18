@@ -84,8 +84,8 @@ Frontend
   - Nice design  DONE
 - Choose your vibe section
   - Nice design 
-  - Changing css styling upon interacting 
-  - state variables assigned after interactions 
+  - Changing css styling upon interacting DONE
+  - state variables assigned after interactions DONE
 - Choose your plan section
   - Nice design
   - action step to checkout with Stripe
