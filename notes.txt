@@ -71,9 +71,9 @@ WIPS project tree.
 
 Frontend
 - Navbar
-  - Nice design
+  - Nice design DONE        **I see problems with the navbar when in phone mode.
   - Smooth window scrolling of window to each section
-- Landing page
+- Landing page              **Seeing problems with the linear gradient when adding more components to App.jsx
   - Nice design DONE
   - Home route
 - Check status of API key
