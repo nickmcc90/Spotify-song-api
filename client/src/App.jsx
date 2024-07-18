@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import Hero from './components/hero'
 
 function App() {
 
@@ -15,9 +16,8 @@ function App() {
   }, [])
 
   return (
-    <div className='uppercase border border-slate-500'>
-      <div>Here is the listed data:</div>
-      <div>{backendData.message}</div>
+    <div className='bg-gradient-to-t from-[#000000] from-10% via-[#170a35] via-60% to-[#421e97] min-h-screen w-full'>
+      <Hero />
     </div>
   )
 }
