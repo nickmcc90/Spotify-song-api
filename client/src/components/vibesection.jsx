@@ -45,8 +45,11 @@ function VibeSection() {
         <div className='flex items-center my-5 mx-auto border overflow-auto flex-none w-[100%]
         h-[400px] flex-nowrap overflow-y-hidden overflow-x-hidden snap-mandatory snap-x scroll-smooth
         bg-black'>
+
           <div ref={firstvibe} className='snap-center w-[100%] text-center flex-none text-white'>
-            <div className="uppercase text-blue-500 text-3xl sm:text-4xl xl:text-5xl font-semibold py-6">Piano</div>
+            <div className="uppercase text-blue-500 text-3xl sm:text-4xl xl:text-5xl font-semibold py-6">
+              Piano
+            </div>
             <div className='font-thin mt-6 text-lg'>
               <div>Melodic upbeat chord progressions</div>
               <div>Interesting funky rhythms</div>
@@ -59,12 +62,42 @@ function VibeSection() {
               </div>
             </div>
           </div>
+
           <div ref={secondvibe} className='snap-center w-[100%] text-center flex-none text-white flex-col'>
-            2
+            <div className="uppercase text-green-500 text-3xl sm:text-4xl xl:text-5xl font-semibold py-6">
+              Tech House
+            </div>
+            <div className='font-thin mt-6 text-lg'>
+              <div>Crisp sound design</div>
+              <div>Pleasant unorthodox melodies</div>
+              <div>Hard hitting tempo</div>
+            </div>
+            <div className='py-6 text-lg'>
+              <div className='font-semibold'>Think:</div>
+              <div className='font-thin'>
+                <div>Club</div>
+                <div>Workout</div>
+              </div>
+            </div>
           </div>
+
           <div ref={thirdvibe} className='snap-center w-[100%] text-center flex-none text-white flex-col'>
-            3
+            <div className="text-[#c32bff] text-3xl sm:text-4xl xl:text-5xl font-semibold py-6">
+              80s JAMS
+            </div>
+            <div className='font-thin mt-6 text-lg'>
+              <div>Classic band sound</div>
+              <div>Beautiful instrumentals</div>
+            </div>
+            <div className='py-6 text-lg'>
+              <div className='font-semibold'>Think:</div>
+              <div className='font-thin'>
+                <div>Get-togethers</div>
+                <div>Party songs</div>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
       <div className='flex gap-5 justify-center'>
