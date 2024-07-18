@@ -2,8 +2,8 @@ import React from 'react'
 
 function StatusCheck() {
   return (
-    <div className='h-[250px] bg-[#2e2860] w-full'>
-      <div className='flex flex-col items-center justify-center text-white p-4 gap-5'>
+    <div className='h-[225px] bg-[#2e2860] w-full'>
+      <div className='flex flex-col items-center justify-center text-white px-4 py-6 gap-5'>
         <div className='flex flex-col gap-1 items-center'>
           <h1 className='text-2xl sm:text-3xl xl-4xl font-bold uppercase'>Check Key Status</h1>
           <div>Please enter your API key below to check its status.</div>

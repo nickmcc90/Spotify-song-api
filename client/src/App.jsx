@@ -18,11 +18,13 @@ function App() {
   }, [])
 
   return (
-    <div className='bg-gradient-to-t from-[#000000] from-10% via-[#170a35] via-60% to-[#421e97] min-h-screen w-full'>
-      <Navbar />
-      <Hero />
-      <StatusCheck />
-    </div>
+    <>
+      <div className='bg-gradient-to-t from-[#000000] from-10% via-[#170a35] via-60% to-[#421e97] min-h-screen w-full'>
+        <Navbar />
+        <Hero />
+      </div>
+        <StatusCheck />
+    </>
   )
 }
 

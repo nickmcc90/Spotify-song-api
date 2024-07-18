@@ -5,7 +5,7 @@ function Navbutton(props) {
   const { title } = props
 
   return (
-    <button className='uppercase hover:opacity-55'>
+    <button className='uppercase hover:opacity-55 text-xs md:text-sm'>
       {title}
     </button>
   )

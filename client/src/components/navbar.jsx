@@ -11,7 +11,7 @@ function Navbar() {
         <div>Music API</div>
         <i className="fa-solid fa-music"></i>
       </div>
-      <div className='flex gap-4'>
+      <div className='flex gap-2 md:gap-4'>
         {navlinks.map((item, itemIndex) => {
           return(
             <Navbutton key={itemIndex} title={item}/>
