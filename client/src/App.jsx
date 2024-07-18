@@ -4,6 +4,7 @@ import Hero from './components/hero'
 import Navbar from './components/navbar'
 import StatusCheck from './components/statuscheck'
 import HowItWorks from './components/howitworks'
+import Updates from './components/updates'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
       <StatusCheck />
       <div className='bg-gradient-to-b from-[#000000] from-10% via-[#170a35] via-60% to-[#421e97] min-h-screen w-full'>
         <HowItWorks />
+        <Updates />
       </div>
         
     </>
