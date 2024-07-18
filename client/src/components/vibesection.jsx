@@ -1,13 +1,15 @@
 import React, { useRef, useState } from 'react'
 
 
-function VibeSection() {
+function VibeSection(props) {
 
   const firstvibe = useRef()
   const secondvibe = useRef()
   const thirdvibe = useRef()
 
   const [vibeTile, setVibeTile] = useState("piano")
+
+  const { vibeCheckout, setVibeCheckout } = props
 
   const handleScrollToFirst = () => {
     firstvibe.current.scrollIntoView({
@@ -34,7 +36,7 @@ function VibeSection() {
       block: 'nearest',
       inline: 'center'
     })
-    setVibeTile("baddy")
+    setVibeTile("80s")
   }
 
 
@@ -61,6 +63,12 @@ function VibeSection() {
                 <div>Workout</div>
               </div>
             </div>
+            <button className={`border py-2 px-4 hover:bg-white hover:text-black 
+            duration-300` + ` ${vibeCheckout === "piano" ? "border-blue-500 text-blue-500" : "border-white text-white"}`}
+              onClick={() => vibeCheckout === "piano" ? setVibeCheckout(null) : setVibeCheckout("piano")}
+            >
+              {vibeCheckout === "piano" ? "Selected." : "Select ?"}
+            </button>
           </div>
 
           <div ref={secondvibe} className='snap-center w-[100%] text-center flex-none text-white flex-col'>
@@ -105,7 +113,7 @@ function VibeSection() {
         onClick={handleScrollToFirst}></button>
         <button className={`h-3 w-3 rounded-full ${vibeTile === "tech" ?  'bg-green-500' : 'bg-slate-700'}`} 
         onClick={handleScrollToSecond}></button>
-        <button className={`h-3 w-3 rounded-full ${vibeTile === "baddy" ?  'bg-[#c32bff]' : 'bg-slate-700'}`} 
+        <button className={`h-3 w-3 rounded-full ${vibeTile === "80s" ?  'bg-[#c32bff]' : 'bg-slate-700'}`} 
         onClick={handleScrollToThird}></button>
       </div>
     </div>

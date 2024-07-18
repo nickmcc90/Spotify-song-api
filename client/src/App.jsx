@@ -6,10 +6,13 @@ import StatusCheck from './components/statuscheck'
 import HowItWorks from './components/howitworks'
 import Updates from './components/updates'
 import VibeSection from './components/vibesection'
+import ColorChanger from './components/colorchanger'
 
 function App() {
 
   const [backendData, setbackendData] = useState([{}])
+
+  const [vibeCheckout, setVibeCheckout] = useState(null)
 
   // useEffect(() => {
   //   async function grabBackend() {
@@ -27,11 +30,11 @@ function App() {
         <Hero />
       </div>
       <StatusCheck />
-      <div className='bg-gradient-to-b from-[#000000] from-10% via-[#170a35] via-60% to-[#421e97] min-h-screen w-full'>
+      <ColorChanger vibeCheckout={vibeCheckout}>
         <HowItWorks />
         <Updates />
-        <VibeSection />
-      </div>
+        <VibeSection vibeCheckout={vibeCheckout} setVibeCheckout={setVibeCheckout}/>
+      </ColorChanger>
         
     </>
   )

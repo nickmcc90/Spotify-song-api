@@ -83,9 +83,10 @@ Frontend
 - How it works section
   - Nice design  DONE
 - Choose your vibe section
-  - Nice design 
+  - Nice design DONE
   - Changing css styling upon interacting DONE
   - state variables assigned after interactions DONE
+  - assigning checkout variable
 - Choose your plan section
   - Nice design
   - action step to checkout with Stripe
