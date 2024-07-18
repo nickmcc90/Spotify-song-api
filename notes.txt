@@ -74,7 +74,7 @@ Frontend
   - Nice design
   - Smooth window scrolling of window to each section
 - Landing page
-  - Nice design
+  - Nice design DONE
   - Home route
 - Check status of API key
   - Nice design
