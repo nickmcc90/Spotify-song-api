@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbutton from './navbutton'
+import Navbutton from './inner-components/navbutton'
 
 function Navbar() {
 

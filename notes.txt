@@ -81,7 +81,7 @@ Frontend
 - Updates section
   - Nice design
 - How it works section
-  - Nice design
+  - Nice design  DONE
 - Choose your vibe section
   - Nice design
   - Changing css styling upon interacting
