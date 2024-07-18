@@ -72,7 +72,7 @@ function VibeSection(props) {
           </div>
 
           <div ref={secondvibe} className='snap-center w-[100%] text-center flex-none text-white flex-col'>
-            <div className="uppercase text-green-500 text-3xl sm:text-4xl xl:text-5xl font-semibold py-6">
+            <div className="uppercase text-green-500 text-3xl sm:text-4xl xl:text-5xl font-semibold py-3">
               Tech House
             </div>
             <div className='font-thin mt-6 text-lg'>
