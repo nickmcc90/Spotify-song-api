@@ -87,6 +87,12 @@ function VibeSection(props) {
                 <div>Workout</div>
               </div>
             </div>
+            <button className={`border py-2 px-4 hover:bg-white hover:text-black 
+            duration-300` + ` ${vibeCheckout === "tech" ? "border-green-500 text-green-500" : "border-white text-white"}`}
+              onClick={() => vibeCheckout === "tech" ? setVibeCheckout(null) : setVibeCheckout("tech")}
+            >
+              {vibeCheckout === "tech" ? "Selected." : "Select ?"}
+            </button>
           </div>
 
           <div ref={thirdvibe} className='snap-center w-[100%] text-center flex-none text-white flex-col'>
@@ -104,6 +110,12 @@ function VibeSection(props) {
                 <div>Party songs</div>
               </div>
             </div>
+            <button className={`border py-2 px-4 hover:bg-white hover:text-black 
+            duration-300` + ` ${vibeCheckout === "80s" ? "border-[#c32bff] text-[#c32bff]" : "border-white text-white"}`}
+              onClick={() => vibeCheckout === "80s" ? setVibeCheckout(null) : setVibeCheckout("80s")}
+            >
+              {vibeCheckout === "80s" ? "Selected." : "Select ?"}
+            </button>
           </div>
 
         </div>
