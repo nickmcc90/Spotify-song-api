@@ -5,19 +5,23 @@ import Navbar from './components/navbar'
 import StatusCheck from './components/statuscheck'
 import HowItWorks from './components/howitworks'
 import Updates from './components/updates'
+import VibeSection from './components/vibesection'
+import ColorChanger from './components/colorchanger'
 
 function App() {
 
   const [backendData, setbackendData] = useState([{}])
 
-  useEffect(() => {
-    async function grabBackend() {
-      const res = await fetch('http://localhost:5000/api')
-      const data = await res.json()
-      setbackendData(data)
-    }
-    grabBackend()
-  }, [])
+  const [vibeCheckout, setVibeCheckout] = useState(null)
+
+  // useEffect(() => {
+  //   async function grabBackend() {
+  //     const res = await fetch('http://localhost:5000/api')
+  //     const data = await res.json()
+  //     setbackendData(data)
+  //   }
+  //   grabBackend()
+  // }, [])
 
   return (
     <>
@@ -26,10 +30,11 @@ function App() {
         <Hero />
       </div>
       <StatusCheck />
-      <div className='bg-gradient-to-b from-[#000000] from-10% via-[#170a35] via-60% to-[#421e97] min-h-screen w-full'>
+      <ColorChanger vibeCheckout={vibeCheckout}>
         <HowItWorks />
         <Updates />
-      </div>
+        <VibeSection vibeCheckout={vibeCheckout} setVibeCheckout={setVibeCheckout}/>
+      </ColorChanger>
         
     </>
   )
