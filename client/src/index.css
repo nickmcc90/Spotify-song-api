@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 * {
-  font-family: Helvetica, sans-serif
+  font-family: Helvetica, sans-serif;
+  box-sizing: border-box
 }
 
 html {
