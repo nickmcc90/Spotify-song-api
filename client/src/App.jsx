@@ -5,6 +5,7 @@ import Navbar from './components/navbar'
 import StatusCheck from './components/statuscheck'
 import HowItWorks from './components/howitworks'
 import Updates from './components/updates'
+import VibeSection from './components/vibesection'
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
       <div className='bg-gradient-to-b from-[#000000] from-10% via-[#170a35] via-60% to-[#421e97] min-h-screen w-full'>
         <HowItWorks />
         <Updates />
+        <VibeSection />
       </div>
         
     </>
