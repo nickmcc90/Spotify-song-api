@@ -8,5 +8,6 @@
 }
 
 html {
-  transition-duration: 200ms
+  transition-duration: 250ms;
+  scroll-behavior: smooth;
 }

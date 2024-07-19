@@ -14,7 +14,7 @@ function BillingPlanning(props) {
   const { vibeCheckout } = props
 
   return (
-    <div className='text-white min-h-screen grid grid-cols-1 lg:grid-cols-2 max-w-[1000px] mx-auto
+    <div id='Payment-Plans' className='text-white min-h-screen grid grid-cols-1 lg:grid-cols-2 max-w-[1000px] mx-auto
     gap-5'>
       <form action="" method="POST" className='flex flex-col p-5 border h-[345px] rounded-xl gap-4'>
         <div className='flex justify-between'>
@@ -57,10 +57,12 @@ function BillingPlanning(props) {
           </div>
         </div>
         <div className='flex justify-start'>
+          {vibeCheckout && (          
           <button className='flex items-center font-semibold gap-2 bg-black py-2 px-4 rounded-xl hover:bg-white hover:text-black duration-200'>
             <i className="fa-solid fa-cart-shopping"></i>
             <div>Checkout with: {vibeCheckout}</div>
           </button>
+          )}
         </div>
       </form>
 
@@ -105,10 +107,12 @@ function BillingPlanning(props) {
           </div>
         </div>
         <div className='flex justify-start'>
+        {vibeCheckout && (          
           <button className='flex items-center font-semibold gap-2 bg-black py-2 px-4 rounded-xl hover:bg-white hover:text-black duration-200'>
             <i className="fa-solid fa-cart-shopping"></i>
             <div>Checkout with: {vibeCheckout}</div>
           </button>
+          )}
         </div>
       </form>
 
