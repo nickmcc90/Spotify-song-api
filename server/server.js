@@ -29,7 +29,7 @@ app.get('/api', (req, res) => {
 })
 
 app.post('/checkout-session/:plan', async (req, res) => {
-  //assign id, mode, and line_items
+  //assign id, mode, line_items, and quantity_type (this is for the status of sub and pre calls)
   //generate api key
   //make customer
   //grab customer.id in a variable
@@ -39,7 +39,7 @@ app.post('/checkout-session/:plan', async (req, res) => {
 
   const { plan } = req.params
   const { vibe } = req.query
-  let price_ID, mode, line_items
+  let price_ID, mode, line_items, quantity_type
 
   const soldItem = products.filter((item) => {
     return item.product.metadata.plan === plan && item.product.metadata.vibe === vibe
@@ -56,6 +56,7 @@ app.post('/checkout-session/:plan', async (req, res) => {
           price: price_ID,
         }
       ]
+      quantity_type = 'subscription'
     } else if (soldItem[0].type === 'one_time') {
       mode = 'payment'
       line_items = [
@@ -64,9 +65,9 @@ app.post('/checkout-session/:plan', async (req, res) => {
           quantity: 1
         }
       ]
+      quantity_type = 20
     }
 
-    // return res.status(200).json({ "message": line_items})
   } else {
     return res.sendStatus(403)
   }
@@ -94,6 +95,16 @@ app.post('/checkout-session/:plan', async (req, res) => {
     cancel_url: `${clientDOMAIN}/cancel`
   })
 
+  // firebase record
+  const timeOfPurchase = new Date().toLocaleDateString('en-us', {month:"short", day:"numeric", year:"numeric", hour:"2-digit", minute:"2-digit", second: "2-digit"})
+  const data = {
+    customer_id: stripeCustomerId,
+    APIkey: newAPIKey,
+    payment_type: plan,
+    status: quantity_type
+  }
+
+  const dbRes = await db.collection('api-keys').doc(newAPIKey).set(data, {merge: true})
 
   res.redirect(303, session.url)
 
