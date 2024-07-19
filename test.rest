@@ -1,0 +1,3 @@
+###
+POST http://localhost:5000/checkout-session/pre?vibe=80s
+Content-Type: application/json

@@ -107,8 +107,9 @@ Backend
   - correct updating of information upon API key usage
   - correct updating of information upon API key cancellation
 - Stripe set up
-  - Credentials in enviornment and it works
-  - post method checkout working
-    - grabbing deciding variables from queries
-    - assigning api key in success url
-  - Correct delegation of prepaid and subscription based keys.
+  - Credentials in enviornment and it works DONE
+  - post method checkout working DONE
+    - grabbing deciding variables from queries DONE
+    - assigning api key in success url DONE
+  - Correct delegation of prepaid and subscription based keys. DONE
+  - Charge subscription account when they use a key inside the api route
