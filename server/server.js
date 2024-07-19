@@ -72,7 +72,13 @@ app.post('/checkout-session/:plan', async (req, res) => {
     return res.sendStatus(403)
   }
 
-  const newAPIKey = generateApiKey()
+  let newAPIKey = generateApiKey()
+  newAPIKey = newAPIKey.replaceAll("/", "")
+  newAPIKey = newAPIKey.replaceAll("+", "")
+  newAPIKey = newAPIKey.replaceAll(".", "")
+  newAPIKey = newAPIKey.replaceAll("~", "")
+
+
   const customer = await stripe.customers.create({
     metadata: {
       APIkey: newAPIKey
@@ -82,6 +88,8 @@ app.post('/checkout-session/:plan', async (req, res) => {
   const stripeCustomerId = customer.id
 
   console.log(mode)
+
+  console.log(newAPIKey)
 
   const session = await stripe.checkout.sessions.create({
     customer: stripeCustomerId,
@@ -98,6 +106,7 @@ app.post('/checkout-session/:plan', async (req, res) => {
   // firebase record
   const timeOfPurchase = new Date().toLocaleDateString('en-us', {month:"short", day:"numeric", year:"numeric", hour:"2-digit", minute:"2-digit", second: "2-digit"})
   const data = {
+    purchase_date: timeOfPurchase,
     customer_id: stripeCustomerId,
     APIkey: newAPIKey,
     payment_type: plan,
