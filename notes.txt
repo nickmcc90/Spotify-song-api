@@ -86,7 +86,7 @@ Frontend
   - Nice design DONE
   - Changing css styling upon interacting DONE
   - state variables assigned after interactions DONE
-  - assigning checkout variable
+  - assigning checkout variable DONE
 - Choose your plan section
   - Nice design
   - action step to checkout with Stripe

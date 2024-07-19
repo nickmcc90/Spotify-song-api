@@ -7,6 +7,7 @@ import HowItWorks from './components/howitworks'
 import Updates from './components/updates'
 import VibeSection from './components/vibesection'
 import ColorChanger from './components/colorchanger'
+import BillingPlanning from './components/billingplanning'
 
 function App() {
 
@@ -34,8 +35,8 @@ function App() {
         <HowItWorks />
         <Updates />
         <VibeSection vibeCheckout={vibeCheckout} setVibeCheckout={setVibeCheckout}/>
-      </ColorChanger>
-        
+        <BillingPlanning />
+      </ColorChanger>        
     </>
   )
 }
