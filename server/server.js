@@ -28,10 +28,16 @@ app.get('/api', (req, res) => {
   res.json({ "message": "Api connected."})
 })
 
-app.get('/check-status/:api_key', (req, res) => {
+app.get('/check-status/:api_key', async (req, res) => {
   const { api_key } = req.params
   console.log(api_key)
-
+  const dbRes = await db.collection('api-keys').doc(api_key).get()
+  if(!dbRes.exists) {
+    return res.status(400).json({"status": "API key does not exist."})
+  } else {
+    const { status } = dbRes.data()
+    res.status(200).json({"status": status})
+  }
 })
 
 app.post('/checkout-session/:plan', async (req, res) => {

@@ -8,7 +8,13 @@ function StatusCheck() {
   const [APIValue, setAPIValue] = useState(null)
 
   async function checkStatus() {
-    const res = await fetch(`${serverDOMAIN}/check-status/${APIValue}`)
+    if(!APIValue) {
+      return
+    } else {
+      const res = await fetch(`${serverDOMAIN}/check-status/${APIValue}`)
+      const { status } = await res.json()
+      console.log(status)
+    }
   }
 
   return (
