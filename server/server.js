@@ -9,7 +9,7 @@ const Stripe = require("stripe")
 
 //Variables
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY
-// const stripe = require('stripe')(STRIPE_SECRET_KEY)
+const stripe = require('stripe')(STRIPE_SECRET_KEY)
 const clientDOMAIN = 'http://localhost:5173'
 
 async function getStripeProducts() {
@@ -50,22 +50,51 @@ app.post('/checkout-session/:plan', async (req, res) => {
     price_ID = soldItem[0].id
     if(soldItem[0].type === 'recurring') {
       mode = 'subscription'
-    } else if (soldItem[0].type === 'null') {
+      line_items = [
+        {
+          price: price_ID,
+        }
+      ]
+    } else if (soldItem[0].type === 'one_time') {
       mode = 'payment'
+      line_items = [
+        {
+          price: price_ID,
+          quantity: 1
+        }
+      ]
     }
-    line_items = [
-      {
-        price: price_ID,
-        quantity: 1
-      }
-    ]
 
     // return res.status(200).json({ "message": line_items})
   } else {
     return res.sendStatus(403)
   }
 
+  const newAPIKey = generateApiKey()
+  const customer = await stripe.customers.create({
+    metadata: {
+      APIkey: newAPIKey
+    }
+  })
 
+  const stripeCustomerId = customer.id
+
+  console.log(mode)
+
+  const session = await stripe.checkout.sessions.create({
+    customer: stripeCustomerId,
+    metadata: {
+      APIkey: newAPIKey,
+      payment_type: plan
+    },
+    line_items: line_items,
+    mode: mode,
+    success_url:`${clientDOMAIN}/success?api_key=${newAPIKey}`,
+    cancel_url: `${clientDOMAIN}/cancel`
+  })
+
+
+  res.redirect(303, session.url)
 
   
 })

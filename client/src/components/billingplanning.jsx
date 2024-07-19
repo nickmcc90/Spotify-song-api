@@ -11,12 +11,14 @@ import React from 'react'
 
 function BillingPlanning(props) {
 
+  const serverDOMAIN = 'http://localhost:5000'
+
   const { vibeCheckout } = props
 
   return (
     <div id='Payment-Plans' className='text-white min-h-screen grid grid-cols-1 lg:grid-cols-2 max-w-[1000px] mx-auto
     gap-5'>
-      <form action="" method="POST" className='flex flex-col p-5 border h-[345px] rounded-xl gap-4'>
+      <form action={`${serverDOMAIN}/checkout-session/pre?vibe=${vibeCheckout}`} method="POST" className='flex flex-col p-5 border h-[345px] rounded-xl gap-4'>
         <div className='flex justify-between'>
           <div className='text-xl font-extrabold'>Prepaid Plan</div>
           <div className='flex items-center gap-2 text-xl'>
@@ -66,7 +68,7 @@ function BillingPlanning(props) {
         </div>
       </form>
 
-      <form action='' method="POST" className='flex flex-col p-5 border h-[345px] rounded-xl gap-4'>
+      <form action={`${serverDOMAIN}/checkout-session/sub?vibe=${vibeCheckout}`} method="POST" className='flex flex-col p-5 border h-[345px] rounded-xl gap-4'>
         <div className='flex justify-between'>
           <div className='text-xl font-extrabold'>Subscription Plan</div>
           <div className='flex items-center gap-2 text-xl'>
