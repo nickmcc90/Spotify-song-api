@@ -92,9 +92,9 @@ Frontend
   - action step to checkout with Stripe DONE
   - correct variables sent to backend after checkout DONE
 - Reviews section
-  - Nice design
+  - Nice design MIGHT EVENTUALLY DO LATER
 - Footer section
-  - Nice design
+  - Nice design DONE
 
 Backend
 - Installment of tailwindcss DONE

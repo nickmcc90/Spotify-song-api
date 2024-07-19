@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 {/* <i className="fa-solid fa-check"></i>  check mark */}
 
 {/* <i className="fa-regular fa-circle-check"></i> circle check */}
@@ -110,6 +111,15 @@ function BillingPlanning(props) {
           </button>
         </div>
       </form>
+
+      <div className='flex items-center gap-5 text-5xl justify-center max-w-[1000px] mx-auto h-[200px]'>
+        <div>Music API</div>
+        <i className="fa-solid fa-music"></i>
+      </div>
+
+      <div className='flex items-center gap-5 text-3xl justify-center max-w-[1000px] mx-auto h-[200px]'>
+        <a className='hover:underline' href='https://github.com/nickmcc90'>Github: nickmcc90</a>
+      </div>
     </div>
   )
 }
