@@ -4,8 +4,13 @@ function Navbutton(props) {
 
   const { title } = props
 
+  const routeNav = () => {
+    const location = title.replaceAll(' ', '-')
+    window.location.href = `#${location}`
+  }
+
   return (
-    <button className='uppercase hover:opacity-55 text-xs md:text-sm'>
+    <button onClick={routeNav} className='uppercase hover:opacity-55 text-xs md:text-sm'>
       {title}
     </button>
   )

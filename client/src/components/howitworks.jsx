@@ -12,7 +12,7 @@ function HowItWorks() {
   ]
 
   return (
-    <div className='flex flex-col gap-10 text-white items-center py-[75px]'>
+    <div id='About' className='flex flex-col gap-10 text-white items-center py-[75px]'>
       <div className='uppercase text-2xl sm:text-3xl xl-4xl font-bold'>How it works</div>
       <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
         {steps.map((item, itemIndex) => {

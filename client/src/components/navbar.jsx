@@ -3,7 +3,7 @@ import Navbutton from './inner-components/navbutton'
 
 function Navbar() {
 
-  const navlinks = ['Status Check', 'Updates', 'Vibes', 'Reviews', 'Payment Plans']
+  const navlinks = ['Status Check', 'About', 'Updates', 'Vibes', 'Payment Plans']
 
   return (
     <nav className='flex justify-between items-center p-5 text-white'>

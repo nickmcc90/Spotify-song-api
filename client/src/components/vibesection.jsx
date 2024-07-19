@@ -41,7 +41,7 @@ function VibeSection(props) {
 
 
   return (
-    <div className='flex flex-col max-w-[400px] mx-auto gap-5 py-[75px]'>
+    <div id="Vibes" className='flex flex-col max-w-[400px] mx-auto gap-5 py-[75px]'>
       <div className='uppercase flex justify-center text-2xl sm:text-3xl xl-4xl font-bold text-white'>Choose your vibe</div>
       <div className='flex items-center justify-between flex-nowrap w-[100%]'>
         <div className='flex items-center my-5 mx-auto border overflow-auto flex-none w-[100%]
