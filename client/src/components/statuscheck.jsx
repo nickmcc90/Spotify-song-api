@@ -1,6 +1,16 @@
 import React from 'react'
+import { useState } from 'react'
 
 function StatusCheck() {
+
+  const serverDOMAIN = 'http://localhost:5000'
+
+  const [APIValue, setAPIValue] = useState(null)
+
+  async function checkStatus() {
+    const res = await fetch(`${serverDOMAIN}/check-status/${APIValue}`)
+  }
+
   return (
     <div id='Status-Check' className='h-[225px] bg-[#2e2860] w-full'>
       <div className='flex flex-col items-center justify-center text-white px-4 py-6 gap-5'>
@@ -13,8 +23,13 @@ function StatusCheck() {
           </div>
         </div>
         <div className='flex justify-around w-[50%]'>
-          <input placeholder='Enter API Key...' className='w-[50%] xl:w-[80%] rounded-full p-3 text-black'/>
-          <button className='bg-[#5147a5] p-2 rounded-xl hover:opacity-65'>Check Status</button>
+          <input 
+            placeholder='Enter API Key...' 
+            className='w-[50%] xl:w-[80%] rounded-full p-3 text-black'
+            value={APIValue}
+            onChange={(e) => {setAPIValue(e.target.value)}}
+          />
+          <button onClick={checkStatus} className='bg-[#5147a5] p-2 rounded-xl hover:opacity-65'>Check Status</button>
         </div>
         {/* This is the room to render variable status statements */}
       </div>

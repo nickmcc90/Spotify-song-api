@@ -28,6 +28,12 @@ app.get('/api', (req, res) => {
   res.json({ "message": "Api connected."})
 })
 
+app.get('/check-status/:api_key', (req, res) => {
+  const { api_key } = req.params
+  console.log(api_key)
+
+})
+
 app.post('/checkout-session/:plan', async (req, res) => {
   //assign id, mode, line_items, and quantity_type (this is for the status of sub and pre calls)
   //generate api key
