@@ -35,7 +35,7 @@ function App() {
         <HowItWorks />
         <Updates />
         <VibeSection vibeCheckout={vibeCheckout} setVibeCheckout={setVibeCheckout}/>
-        <BillingPlanning />
+        <BillingPlanning vibeCheckout={vibeCheckout}/>
       </ColorChanger>        
     </>
   )

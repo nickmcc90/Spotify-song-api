@@ -89,8 +89,8 @@ Frontend
   - assigning checkout variable DONE
 - Choose your plan section
   - Nice design DONE
-  - action step to checkout with Stripe
-  - correct variables sent to backend after checkout
+  - action step to checkout with Stripe DONE
+  - correct variables sent to backend after checkout DONE
 - Reviews section
   - Nice design
 - Footer section
