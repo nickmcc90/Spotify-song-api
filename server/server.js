@@ -6,6 +6,7 @@ app.use(express.json())
 app.use(require('cors')())
 require('dotenv').config()
 const Stripe = require("stripe")
+const { db } = require('./firebase')
 
 //Variables
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY
