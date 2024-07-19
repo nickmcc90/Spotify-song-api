@@ -88,7 +88,7 @@ Frontend
   - state variables assigned after interactions DONE
   - assigning checkout variable DONE
 - Choose your plan section
-  - Nice design
+  - Nice design DONE
   - action step to checkout with Stripe
   - correct variables sent to backend after checkout
 - Reviews section
