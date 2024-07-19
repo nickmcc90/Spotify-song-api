@@ -86,11 +86,11 @@ Frontend
   - Nice design DONE
   - Changing css styling upon interacting DONE
   - state variables assigned after interactions DONE
-  - assigning checkout variable
+  - assigning checkout variable DONE
 - Choose your plan section
-  - Nice design
-  - action step to checkout with Stripe
-  - correct variables sent to backend after checkout
+  - Nice design DONE
+  - action step to checkout with Stripe DONE
+  - correct variables sent to backend after checkout DONE
 - Reviews section
   - Nice design
 - Footer section
