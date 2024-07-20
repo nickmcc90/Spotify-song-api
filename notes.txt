@@ -103,7 +103,9 @@ Backend
   - Credentials in environment and it works DONE
   - correct information sent to firebase after checkouts DONE
   - correct retrieval of information after requesting API key DONE
-  - correct retrieval of information upon user executing an API key 
+  - correct retrieval of information upon user executing an API key DONE
+  - make the status check show the vibe they chose
+  - Add recursive behavior to not send the same song
   - correct updating of information upon API key usage
   - correct updating of information upon API key cancellation
 - Stripe set up

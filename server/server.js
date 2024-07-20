@@ -24,8 +24,27 @@ async function getStripeProducts() {
   return prices
 }
 
-app.get('/api', (req, res) => {
-  res.json({ "message": "Api connected."})
+app.get('/api', async (req, res) => {
+  // res.json({ "message": "Api connected."})
+  const { api_key } = req.query
+  const dbRes = await db.collection('api-keys').doc(api_key).get()
+  if(!dbRes.exists) {
+    res.sendStatus(403)
+  } else {
+    const { vibe, status } = dbRes.data()
+    console.log(vibe + " " + status)
+
+    // vibe grabber
+    const specific = await db.collection('vibes').doc(vibe).get()
+    const grabAllSongs = specific.data()
+    const songPrefixes = Object.keys(grabAllSongs)
+    const lengthOfSongs = songPrefixes.length
+    // generate random number
+    const randoNumber = String(Math.floor(Math.random() * lengthOfSongs))
+    const decider = songPrefixes[randoNumber]
+    const song = grabAllSongs[decider]
+    res.status(200).json({"song": song})
+  }
 })
 
 app.get('/check-status/:api_key', async (req, res) => {
@@ -122,7 +141,8 @@ app.post('/checkout-session/:plan', async (req, res) => {
     customer_id: stripeCustomerId,
     APIkey: newAPIKey,
     payment_type: plan,
-    status: quantity_type
+    status: quantity_type,
+    vibe: vibe
   }
 
   const dbRes = await db.collection('api-keys').doc(newAPIKey).set(data, {merge: true})
