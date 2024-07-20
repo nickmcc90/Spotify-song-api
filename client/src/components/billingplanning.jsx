@@ -15,6 +15,11 @@ function BillingPlanning(props) {
 
   const { vibeCheckout } = props
 
+  // grabbing the data a month ahead of today
+  const today = new Date();
+  let monthAhead = new Date(new Date().setDate(today.getDate() + 31));
+  monthAhead = monthAhead.toLocaleDateString('en-us', {month:"short", day:"numeric", year:"numeric"})
+
   return (
     <div id='Payment-Plans' className='text-white min-h-screen grid grid-cols-1 lg:grid-cols-2 max-w-[1000px] mx-auto
     gap-5'>
@@ -104,7 +109,7 @@ function BillingPlanning(props) {
             </div>
             <div className='flex justify-between font-thin'>
               <div>Renewal Date</div>
-              <div>August 21, 2024</div>
+              <div>{monthAhead}</div>
             </div>
           </div>
         </div>
