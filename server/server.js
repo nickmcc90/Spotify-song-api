@@ -27,23 +27,67 @@ async function getStripeProducts() {
 app.get('/api', async (req, res) => {
   // res.json({ "message": "Api connected."})
   const { api_key } = req.query
+  if(!api_key) {
+    return res.sendStatus(403)
+  }
+  let paid_status
   const dbRes = await db.collection('api-keys').doc(api_key).get()
   if(!dbRes.exists) {
-    res.sendStatus(403)
+    return res.sendStatus(403)
   } else {
-    const { vibe, status } = dbRes.data()
+    const { vibe, status, customer_id } = dbRes.data()
     console.log(vibe + " " + status)
 
-    // vibe grabber
-    const specific = await db.collection('vibes').doc(vibe).get()
-    const grabAllSongs = specific.data()
-    const songPrefixes = Object.keys(grabAllSongs)
-    const lengthOfSongs = songPrefixes.length
-    // generate random number
-    const randoNumber = String(Math.floor(Math.random() * lengthOfSongs))
-    const decider = songPrefixes[randoNumber]
-    const song = grabAllSongs[decider]
-    res.status(200).json({"song": song})
+    if(status === "subscription") {
+      // subscription route
+      paid_status = true
+
+      // tracking usage in stripe for the subscription
+      const customer = await stripe.customers.retrieve(
+        customer_id,
+        { expand: ['subscriptions']}
+      )
+      let subscriptionId = customer?.subscriptions?.data?.[0]?.id
+      const subscription = await stripe.subscriptions.retrieve(subscriptionId)
+      const itemId = subscription?.items?.data[0].id
+
+      const record = stripe.subscriptionItems.createUsageRecord(
+        itemId, {
+          quantity: 1,
+          timestamp: 'now',
+          action: 'increment'
+        }
+      )
+      console.log('record created')
+
+
+    } else if (status > 0) {
+      // prepaid route
+      paid_status = true
+      // Knocking down status count status count by one.
+      const data = {
+        status: status - 1
+      }
+      await db.collection('api-keys').doc(api_key).set(data, { merge: true })
+    }
+
+    if(paid_status) {
+      // THE KEY IS VALID
+      // vibe grabber
+      const specific = await db.collection('vibes').doc(vibe).get()
+      const grabAllSongs = specific.data()
+      const songPrefixes = Object.keys(grabAllSongs)
+      const lengthOfSongs = songPrefixes.length
+      // generate random number
+      const randoNumber = String(Math.floor(Math.random() * lengthOfSongs))
+      const decider = songPrefixes[randoNumber]
+      const song = grabAllSongs[decider]
+      return res.status(200).json({"song": song})
+    } else {
+      // THE KEY IS NOT VALID
+      return res.sendStatus(403)
+    }
+
   }
 })
 

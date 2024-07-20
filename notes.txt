@@ -106,7 +106,7 @@ Backend
   - correct retrieval of information upon user executing an API key DONE
   - make the status check show the vibe they chose DONE
   - Add recursive behavior to not send the same song
-  - correct updating of information upon API key usage
+  - correct updating of information upon API key usage DONE
   - correct updating of information upon API key cancellation
 - Stripe set up
   - Credentials in enviornment and it works DONE
