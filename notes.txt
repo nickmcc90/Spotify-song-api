@@ -107,11 +107,11 @@ Backend
   - make the status check show the vibe they chose DONE
   - Add recursive behavior to not send the same song
   - correct updating of information upon API key usage DONE
-  - correct updating of information upon API key cancellation
+  - correct updating of information upon API key cancellation DONE
 - Stripe set up
   - Credentials in enviornment and it works DONE
   - post method checkout working DONE
     - grabbing deciding variables from queries DONE
     - assigning api key in success url DONE
   - Correct delegation of prepaid and subscription based keys. DONE
-  - Charge subscription account when they use a key inside the api route
+  - Charge subscription account when they use a key inside the api route DONE

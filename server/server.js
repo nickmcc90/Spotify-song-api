@@ -199,4 +199,35 @@ app.post('/checkout-session/:plan', async (req, res) => {
   
 })
 
+app.get('/delete/:api_key', async (req, res) => {
+  const { api_key } = req.params
+  const dbRes = await db.collection('api-keys').doc(api_key).get()
+  if(!dbRes.exists) {
+    return res.status(403).json({ "message": "API key does not exist."})
+  } else {
+    const { customer_id } = dbRes.data()
+    try {
+      // removing subscription from stripe
+      const customer = await stripe.customers.retrieve(
+        customer_id,
+        { expand: ['subscriptions']}
+      )
+      let subscriptionId = customer?.subscriptions?.data?.[0]?.id
+      await stripe.subscriptions.cancel(subscriptionId)
+
+      //updating firebase with null subscription
+      const data = {
+        status: null
+      }
+
+      await db.collection('api-keys').doc(api_key).set(data, { merge: true })
+
+      return res.status(200).json({"message": "Deleted."})
+
+    } catch {
+      res.sendStatus(500)
+    }
+  }
+})
+
 app.listen(5000, () => console.log("Listening on port 5000."))

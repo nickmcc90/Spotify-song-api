@@ -3,11 +3,48 @@ import { useState, useEffect } from 'react'
 
 function StatusCheck() {
 
+/*
+
+        <div 
+          className='text-blue-300 mr-5'>Subscription status: 
+          <span className='text-green-400 mr-5'>ACTIVE</span>Type: {vibe}
+          <button></button>
+        </div>
+*/
+
   const serverDOMAIN = 'http://localhost:5000'
 
   const [APIValue, setAPIValue] = useState("")
 
   const [statusDisplay, setStatusDisplay] = useState(null)
+
+  async function cancelSubscription() {
+    console.log("yup")
+
+    if(!APIValue) {
+      return
+    } else {
+      const res = await fetch(`${serverDOMAIN}/delete/${APIValue}`)
+      const { message } = await res.json()
+      console.log(message)
+      if(message === "Deleted.") {
+        // if the subscription is successfully deleted
+        setStatusDisplay(
+          <div className='flex gap-5 items-center'>
+            <div className='text-blue-300'>Subscription status:</div>
+            <div className='text-green-500'>Deleted.</div>
+          </div>
+        )
+      } else {
+        // if the subscription had a problem deleting.
+        setStatusDisplay(
+          <div className='text-red-500'>
+            Subscription could not be removed. Please refresh the page or try again in a few minutes.
+          </div>
+        )
+      }
+    }
+  }
 
   async function checkStatus() {
     if(!APIValue) {
@@ -20,9 +57,20 @@ function StatusCheck() {
       if(status === "API key does not exist.") {
         setStatusDisplay(<div className='text-red-500'>API key does not exist.</div>)
       } else if (status === null) {
-        setStatusDisplay(<div className='text-red-500'>Inactive key. Type = {vibe}</div>)
+        setStatusDisplay(<div className='text-red-500'>Inactive key. Type: {vibe}</div>)
       } else if (status === "subscription") {
-        setStatusDisplay(<div className='text-blue-300'>Subscription status: <span className='text-green-400 mr-5'>ACTIVE</span>Type: {vibe}</div>)
+        setStatusDisplay(
+          <div className='flex gap-5 items-center'>
+            <div className='text-blue-300'>Subscription status:</div>
+            <div className='text-green-500'>ACTIVE</div>
+            <div className='text-blue-300'>Type: {vibe}</div>
+            <button className='flex gap-2 items-center bg-coral border-white bg-[#c04732]
+            rounded-full px-2 hover:opacity-80' onClick={cancelSubscription}>
+              <i className="fa-solid fa-ban"></i>
+              <div>Cancel subscription?</div>
+            </button>
+          </div>
+        )
       } else {
         setStatusDisplay(<div className='text-blue-300'>API calls left: <span className='text-green-400 mr-5'>{status}</span>Type: {vibe}</div>)
       }
