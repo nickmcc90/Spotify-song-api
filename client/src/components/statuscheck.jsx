@@ -14,17 +14,17 @@ function StatusCheck() {
       return
     } else {
       const res = await fetch(`${serverDOMAIN}/check-status/${APIValue}`)
-      const { status } = await res.json()
+      const { status, vibe } = await res.json()
       console.log(status)
       // configuring status display
       if(status === "API key does not exist.") {
         setStatusDisplay(<div className='text-red-500'>API key does not exist.</div>)
       } else if (status === null) {
-        setStatusDisplay(<div className='text-red-500'>Inactive key.</div>)
+        setStatusDisplay(<div className='text-red-500'>Inactive key. Type = {vibe}</div>)
       } else if (status === "subscription") {
-        setStatusDisplay(<div className='text-blue-300'>Subscription status: <span className='text-green-400'>ACTIVE</span></div>)
+        setStatusDisplay(<div className='text-blue-300'>Subscription status: <span className='text-green-400 mr-5'>ACTIVE</span>Type: {vibe}</div>)
       } else {
-        setStatusDisplay(<div className='text-blue-300'>API calls left: <span className='text-green-400'>{status}</span></div>)
+        setStatusDisplay(<div className='text-blue-300'>API calls left: <span className='text-green-400 mr-5'>{status}</span>Type: {vibe}</div>)
       }
     }
   }

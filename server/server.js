@@ -54,8 +54,11 @@ app.get('/check-status/:api_key', async (req, res) => {
   if(!dbRes.exists) {
     return res.status(400).json({"status": "API key does not exist."})
   } else {
-    const { status } = dbRes.data()
-    res.status(200).json({"status": status})
+    const { status, vibe } = dbRes.data()
+    res.status(200).json({
+      "status": status,
+      "vibe": vibe
+  })
   }
 })
 
