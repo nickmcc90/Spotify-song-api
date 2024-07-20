@@ -102,8 +102,8 @@ Backend
 - Firebase firestore set up and export
   - Credentials in environment and it works DONE
   - correct information sent to firebase after checkouts DONE
-  - correct retrieval of information after requesting API key
-  - correct retrieval of information upon user executing an API key
+  - correct retrieval of information after requesting API key DONE
+  - correct retrieval of information upon user executing an API key 
   - correct updating of information upon API key usage
   - correct updating of information upon API key cancellation
 - Stripe set up
