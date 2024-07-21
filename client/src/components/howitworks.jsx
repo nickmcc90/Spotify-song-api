@@ -8,7 +8,7 @@ function HowItWorks() {
   const descriptions = [
     "Choose a vibe. This is the API you will be getting your songs from.",
     "Select a prepaid plan or a subscription based plan for your key.",
-    "Copy the key given to you and receive quality songs through API calls!"
+    "Copy the key given to you and go to Docs to learn how to make the API calls!"
   ]
 
   return (
