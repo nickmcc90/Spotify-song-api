@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 
-import Modal from './modal'
+import Modal from './inner-components/modal'
 
 function StatusCheck() {
 
