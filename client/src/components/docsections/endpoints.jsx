@@ -1,10 +1,10 @@
 import React from 'react'
-import third from '../../../public/third.png'
-import fourth from '../../../public/fourth.png'
-import fifth from '../../../public/fifth.png'
-import sixth from '../../../public/sixth.png'
-import seventh from '../../../public/seventh.png'
-import eighth from '../../../public/eighth.png'
+import third from '../../assets/third.png'
+import fourth from '../../assets/fourth.png'
+import fifth from '../../assets/fifth.png'
+import sixth from '../../assets/sixth.png'
+import seventh from '../../assets/seventh.png'
+import eighth from '../../assets/eighth.png'
 
 function Endpoints() {
   return (
