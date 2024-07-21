@@ -4,7 +4,7 @@ import second from '../../../public/second.png'
 
 function Instructions() {
   return (
-    <div className='flex flex-col gap-6 max-w-[550px]'>
+    <div className='flex flex-col gap-6 max-w-[550px] px-4'>
       <div className='text-xl sm:text-2xl xl:text-3xl font-bold'>
           Preparing Your Computer to Use Music API
       </div>

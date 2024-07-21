@@ -8,7 +8,7 @@ import eighth from '../../../public/eighth.png'
 
 function Endpoints() {
   return (
-    <div className='flex flex-col gap-6 max-w-[700px]'>
+    <div className='flex flex-col gap-6 max-w-[700px] px-4'>
       <div className='text-xl sm:text-2xl xl:text-3xl font-bold'>
           Endpoints
       </div>
@@ -27,18 +27,18 @@ function Endpoints() {
         </i>
         <div className='font-thin text-lg'>1&#x2e; No entry after request&#x3A;</div>
         <div className='flex flex-col gap-2 mb-4'>
-          <img className='aspect-ratio h-[200px]' src={third}/>
-          <img className='aspect-ratio h-[400px]' src={fourth}/>
+          <img className='aspect-ratio w-[600px] ' src={third}/>
+          <img className='aspect-ratio w-[600px]' src={fourth}/>
         </div>
         <div className='font-thin text-lg'>2&#x2e; Random key, invalid key, random input&#x3A;</div>
         <div className='flex flex-col gap-2 mb-4'>
-          <img className='aspect-ratio h-[200px]' src={fifth}/>
-          <img className='aspect-ratio h-[400px]' src={sixth}/>
+          <img className='aspect-ratio w-[600px]' src={fifth}/>
+          <img className='aspect-ratio w-[600px]' src={sixth}/>
         </div>
         <div className='font-thin text-lg'>3&#x2e; Correct usage of endpoint&#x3A;</div>
         <div className='flex flex-col gap-2'>
-          <img className='aspect-ratio h-[200px]' src={seventh}/>
-          <img className='aspect-ratio h-[400px]' src={eighth}/>
+          <img className='aspect-ratio w-[600px]' src={seventh}/>
+          <img className='aspect-ratio w-[600px]' src={eighth}/>
         </div>
       </div>
     </div>
