@@ -1,6 +1,6 @@
 import React from 'react'
-import first from '../../../public/firstpicture.png'
-import second from '../../../public/second.png'
+import first from '../../assets/firstpicture.png'
+import second from '../../assets/second.png'
 
 function Instructions() {
   return (
