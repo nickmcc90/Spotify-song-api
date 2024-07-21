@@ -115,3 +115,40 @@ Backend
     - assigning api key in success url DONE
   - Correct delegation of prepaid and subscription based keys. DONE
   - Charge subscription account when they use a key inside the api route DONE
+
+
+  Next steps now that we are DONE:
+  1. Upload both the client and server to github
+  2. Upload website on netlify.
+  3. Make sure the frontend can function
+  4. Screen record a video demonstrating the abilities of the website
+  5. Display the video in the read.message
+  6. Have the website url in the link anyway
+  7. Provide an explanation as to why stripe and API keys won't working
+  (i.e the server needs to run constantly on a platform, and I don't want to pay money for that,
+  just demonstrate my ability to make an api)
+
+  The abilities to demonstrate:
+  1. Scrolling through the entire website, for the aesthetics (both full screen and small screen).
+  2. Website responsiveness (nav bar smooth scrolling)
+  3. Flick through the vibes, and click on a few to show the background change.
+  4. Show the checkout process with Stripe (for a prepaid), making a remorable email.
+  5. Show the newly created account in firebase.
+  6. Show the newly created customer in stripe.
+  7. Type random text to show the "API does not exist text"
+  8. Paste the code to show the status check.
+  9. Go into test.rest and use the key.
+  10. Look up the song on spotify.
+  11. Put the key in the status bar and show how it removed a call.
+  12. Buy a subscription plan.
+  13. Show checkout
+  14. Show newly created firebase
+  15. Show newly created stripe
+  16. Display status of key
+  17. Use the key
+  18. Show sub charge in stripe
+  19. Display status of key then cancellation
+  20. Paste key in status again after refresh to show inactive.
+  21. Show inactive in stripe
+  22. Show null in firebase
+  23. Try to use the key and show a forbidden in test.rest

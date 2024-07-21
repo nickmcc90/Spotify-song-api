@@ -1,22 +1,21 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 
+import Modal from './modal'
+
 function StatusCheck() {
-
-/*
-
-        <div 
-          className='text-blue-300 mr-5'>Subscription status: 
-          <span className='text-green-400 mr-5'>ACTIVE</span>Type: {vibe}
-          <button></button>
-        </div>
-*/
 
   const serverDOMAIN = 'http://localhost:5000'
 
   const [APIValue, setAPIValue] = useState("")
 
   const [statusDisplay, setStatusDisplay] = useState(null)
+
+  const [toggleModal, setToggleModal] = useState(false)
+
+  function modalShowing() {
+    setToggleModal(!toggleModal)
+  }
 
   async function cancelSubscription() {
     console.log("yup")
@@ -65,7 +64,7 @@ function StatusCheck() {
             <div className='text-green-500'>ACTIVE</div>
             <div className='text-blue-300'>Type: {vibe}</div>
             <button className='flex gap-2 items-center bg-coral border-white bg-[#c04732]
-            rounded-full px-2 hover:opacity-80' onClick={cancelSubscription}>
+            rounded-full px-2 hover:opacity-80' onClick={modalShowing}>
               <i className="fa-solid fa-ban"></i>
               <div>Cancel subscription?</div>
             </button>
@@ -105,6 +104,7 @@ function StatusCheck() {
         {/* This is the room to render variable status statements */}
         {statusDisplay}
       </div>
+      {toggleModal && (<Modal cancelSubscription={cancelSubscription} modalShowing={modalShowing} />)}
     </div>
   )
 }
