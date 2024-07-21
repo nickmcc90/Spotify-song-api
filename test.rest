@@ -1,3 +1,50 @@
 ###
 POST http://localhost:5000/checkout-session/pre?vibe=80s
 Content-Type: application/json
+
+###
+GET http://localhost:5000/api?api_key=1QhLEMOTwpFBQ0RbVK7YBM8I0uVuyr
+// 80s grabber
+
+###
+GET http://localhost:5000/api?api_key=NSgNxMVyTcf2ff1t1dNjNqpjYiwdq
+// tech grabber
+
+###
+GET http://localhost:5000/api?api_key=8t2dQMcC6wGm7HxT95PsFvH
+// piano grabber
+
+
+
+
+
+
+
+
+
+###
+GET http://localhost:5000/api?api_key=IUJq7iO1aWcJwpM8
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
