@@ -1,22 +1,30 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 
-import Modal from './inner-components/modal'
+import Modal from './inner-components/cancelsubmodal'
 
 function StatusCheck() {
 
+  // This is the domain that the api status check request gets sent to.
   const serverDOMAIN = 'http://localhost:5000'
 
+  // This is the value of the input bar when the user finishes typing.
   const [APIValue, setAPIValue] = useState("")
 
+  // This variable displays an status response underneath the input bar when the value is not null 
   const [statusDisplay, setStatusDisplay] = useState(null)
 
+  // This variable toggles the subscription cancellation modal
   const [toggleModal, setToggleModal] = useState(false)
 
-  function modalShowing() {
+  // This function displays or hides the cancel subscription modal.
+  // This function can only be accessed in a status display that reveals a cancel subscription button.
+  function cancelSubModalShowing() {
     setToggleModal(!toggleModal)
   }
 
+  // This function initiates cancelling a subscription. This is only called from cancelsubmodal.jsx.
+  // We access the /delete route in server.js
   async function cancelSubscription() {
     console.log("yup")
 
@@ -45,6 +53,8 @@ function StatusCheck() {
     }
   }
 
+  // This function sends a get request to the /check-status route of server.js and
+  // displays the status message underneath the input bar.
   async function checkStatus() {
     if(!APIValue) {
       return
@@ -64,19 +74,21 @@ function StatusCheck() {
             <div className='text-green-500'>ACTIVE</div>
             <div className='text-blue-300'>Type: {vibe}</div>
             <button className='flex gap-2 items-center bg-coral border-white bg-[#c04732]
-            rounded-full px-2 hover:opacity-80' onClick={modalShowing}>
+            rounded-full px-2 hover:opacity-80' onClick={cancelSubModalShowing}>
               <i className="fa-solid fa-ban"></i>
               <div>Cancel subscription?</div>
             </button>
           </div>
         )
       } else {
+        // if the status is a number, then we are getting the status of a prepaid key.
         setStatusDisplay(<div className='text-blue-300'>API calls left: <span className='text-green-400 mr-5'>{status}</span>Type: {vibe}</div>)
       }
     }
   }
 
   // this returns the display messages to nothing everytime the page refreshes.
+  // we don't want the messages persisting after reloading.
   useEffect(() => {
     setStatusDisplay(null)
   }, [])
@@ -104,7 +116,9 @@ function StatusCheck() {
         {/* This is the room to render variable status statements */}
         {statusDisplay}
       </div>
-      {toggleModal && (<Modal cancelSubscription={cancelSubscription} modalShowing={modalShowing} />)}
+
+      {/* The cancel subscription modal does not render to the screen unless we toggle it.*/}
+      {toggleModal && (<Modal cancelSubscription={cancelSubscription} modalShowing={cancelSubModalShowing} />)}
     </div>
   )
 }

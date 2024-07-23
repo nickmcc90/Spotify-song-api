@@ -4,7 +4,12 @@ function ColorChanger(props) {
 
   const { children, vibeCheckout } = props
 
-  // this looks confusing, but we need many conditionals for only the colors to render and not reload everything inside the component.
+  // this is atrocious
+  // I could possibly store these string values in a useState variable to clean things up
+  // Explanation:
+  // If the customer HASN'T chosen a product yet -> the gradient background is standard purple.
+  // Then, using conditional statments......
+  // Based on the product the customer chose -> the gradient is selected.
 
   return (
     <>

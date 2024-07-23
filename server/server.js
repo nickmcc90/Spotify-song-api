@@ -5,14 +5,15 @@ const app = express()
 app.use(express.json())
 app.use(require('cors')())
 require('dotenv').config()
-const Stripe = require("stripe")
+const Stripe = require("stripe")  // this instance of stripe is used within the async function getStripeProducts()
 const { db } = require('./firebase')
 
 //Variables
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY
-const stripe = require('stripe')(STRIPE_SECRET_KEY)
+const stripe = require('stripe')(STRIPE_SECRET_KEY) // this instance of stripe is used within routes
 const clientDOMAIN = 'http://localhost:5173'
 
+// This function grabs the premade products in stripe. It is called in the POST checkout process.
 async function getStripeProducts() {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? '', {
     apiVersion: '2020-08-27'
@@ -24,6 +25,7 @@ async function getStripeProducts() {
   return prices
 }
 
+// This is the route that is called with the customer api key to deliver a song.
 app.get('/api', async (req, res) => {
   // res.json({ "message": "Api connected."})
   const { api_key } = req.query
@@ -107,24 +109,28 @@ app.get('/check-status/:api_key', async (req, res) => {
 })
 
 app.post('/checkout-session/:plan', async (req, res) => {
+  //steps:
   //assign id, mode, line_items, and quantity_type (this is for the status of sub and pre calls)
   //generate api key
   //make customer
   //grab customer.id in a variable
   //create a checkout session with the id, metadata, line_items, mode, success and cancel urls
+  /* ----------- */
 
+  // Here we are server side rendering stripe products.
   const products = await getStripeProducts()
 
   const { plan } = req.params
   const { vibe } = req.query
   let price_ID, mode, line_items, quantity_type
 
+  // Here, we filter through all the items in stripe and output the matching item the customer chose.
   const soldItem = products.filter((item) => {
     return item.product.metadata.plan === plan && item.product.metadata.vibe === vibe
   })
 
-  console.log("This is the sold item", soldItem)
-
+  // if we have a match, then we grab the price_ID, mode, and set up line_items.
+  // we need to differentiate if its a prepaid key or sub key, because the data will be different.
   if(soldItem.length > 0) {
     price_ID = soldItem[0].id
     if(soldItem[0].type === 'recurring') {
@@ -150,25 +156,24 @@ app.post('/checkout-session/:plan', async (req, res) => {
     return res.sendStatus(403)
   }
 
+  // generating a new api key without the weird symbols it comes with.
   let newAPIKey = generateApiKey()
   newAPIKey = newAPIKey.replaceAll("/", "")
   newAPIKey = newAPIKey.replaceAll("+", "")
   newAPIKey = newAPIKey.replaceAll(".", "")
   newAPIKey = newAPIKey.replaceAll("~", "")
 
-
+  // creating a customer
   const customer = await stripe.customers.create({
     metadata: {
       APIkey: newAPIKey
     }
   })
 
+  // grabbing customer id
   const stripeCustomerId = customer.id
 
-  console.log(mode)
-
-  console.log(newAPIKey)
-
+  // checking out session in stripe with information
   const session = await stripe.checkout.sessions.create({
     customer: stripeCustomerId,
     metadata: {
@@ -199,6 +204,7 @@ app.post('/checkout-session/:plan', async (req, res) => {
   
 })
 
+// cancel subscription route
 app.get('/delete/:api_key', async (req, res) => {
   const { api_key } = req.params
   const dbRes = await db.collection('api-keys').doc(api_key).get()
