@@ -8,7 +8,7 @@ navigate smoothly through the website, and visit the DOCS page to understand how
 
 Skills learned: 
 How to...
-* Develop a project vision to be broken up into multiple logical parts, with commits for each function.
+* Develop a project vision to be broken up into multiple logical parts, with pull requests and commits for each function.
 * Revise my code with comments, readability, and scalability to be more than "it works" code.
 * Build a server with Express.js and Node.js with CRUD capabilities
 * Integrate Firebase and Stripe to store customer information and receive payments.
