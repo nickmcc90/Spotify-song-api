@@ -6,7 +6,7 @@ import Modal from './inner-components/cancelsubmodal'
 function StatusCheck() {
 
   // This is the domain that the api status check request gets sent to.
-  const serverDOMAIN = 'http://localhost:5000'
+  const serverDOMAIN = 'http://nicks-music-api.ink'
 
   // This is the value of the input bar when the user finishes typing.
   const [APIValue, setAPIValue] = useState("")
