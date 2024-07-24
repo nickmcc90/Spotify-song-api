@@ -3,7 +3,7 @@ import React from 'react'
 function BillingPlanning(props) {
 
   // This is the domain that the stripe checkout request gets sent to.
-  const serverDOMAIN = 'http://nicks-music-api.ink'
+  const serverDOMAIN = 'https://nicks-music-api.ink'
 
   const { vibeCheckout } = props
 
