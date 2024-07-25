@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      padding-bottom: 2rem; 
+      width: 100%; 
+      min-height: 100vh; 
+      color: #ffffff; 
+      background-image: linear-gradient(to top, #000000, #421e97); 
+    }
+
+    .statement-holder {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      padding-top: 20px
+    }
+
+    .back-home {
+      text-decoration: underline;
+      color: white;
+    }
+
+    .back-home:hover {
+      opacity: 65%
+    }
+    
+  </style>
+</head>
+<body>
+  <div class='container'>
+    <div className='statement-holder'>
+      <div>Sorry about the cancellation!</div>
+      <a className='back-home' href='https://music-api-600.netlify.app'>Back home</a>
+    </div>
+  </div>
+</body>
+</html>

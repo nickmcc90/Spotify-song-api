@@ -7,22 +7,28 @@ app.use(require('cors')())
 require('dotenv').config()
 const Stripe = require("stripe")  // this instance of stripe is used within the async function getStripeProducts()
 const { db } = require('./firebase')
+app.use(express.static('public'))
 
 //Variables
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY
 const stripe = require('stripe')(STRIPE_SECRET_KEY) // this instance of stripe is used within routes
-const clientDOMAIN = 'http://localhost:5173'
+const serverDOMAIN = 'https://nicks-music-api.ink'
 
 // This function grabs the premade products in stripe. It is called in the POST checkout process.
 async function getStripeProducts() {
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? '', {
-    apiVersion: '2020-08-27'
-  })
-  const res = await stripe.prices.list({
-    expand: ['data.product']
-  })
-  const prices = res.data
-  return prices
+  try {
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? '', {
+      apiVersion: '2020-08-27'
+    })
+    const res = await stripe.prices.list({
+      expand: ['data.product']
+    })
+    const prices = res.data
+    return prices
+  } catch (error) {
+    console.log(error)
+  }
+
 }
 
 // This is the route that is called with the customer api key to deliver a song.
@@ -182,8 +188,8 @@ app.post('/checkout-session/:plan', async (req, res) => {
     },
     line_items: line_items,
     mode: mode,
-    success_url:`${clientDOMAIN}/success?api_key=${newAPIKey}`,
-    cancel_url: `${clientDOMAIN}/cancel`
+    success_url:`${serverDOMAIN}/success.html?api_key=${newAPIKey}`,
+    cancel_url: `${serverDOMAIN}/cancel.html`
   })
 
   // firebase record
