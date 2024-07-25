@@ -19,7 +19,11 @@ How to...
 * Store secrets in environment variables.
 
 ## Purchasing an API key
-For now, Stripe is in test mode for all API key purchases. This means that you can purchase an API key for free as long
-as you type in 4242 4242 4242 4242 as the credit card information and any random strings for the rest of the information.
+If you don't want to spend too much, you can buy a subscription key and not pay anything at all until you use it.
+When you use it, it will charge your card 5 cents. Then, if you want to be done with the key, you can paste your key
+in the status bar and a cancel subscription button will pop up!
 
-Have fun discovering the new songs!
+## Images of website
+![image](https://github.com/user-attachments/assets/b560a146-8e73-47d3-9309-426c062b1785)
+![image](https://github.com/user-attachments/assets/5e3d3ae0-5ddd-4807-9296-25aec20e3b3f)
+
