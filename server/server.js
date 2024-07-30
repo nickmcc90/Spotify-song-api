@@ -114,6 +114,21 @@ app.get('/check-status/:api_key', async (req, res) => {
   }
 })
 
+app.post('/feedback', async (req, res) => {
+  const { feedback } = req.body
+
+  // putting feedback in object form
+  data = {
+    "request": feedback
+  }
+  // grabbing the date of request
+  const dateOfFeedback = new Date().toLocaleDateString('en-us', {month:"short", day:"numeric", year:"numeric", hour:"2-digit", minute:"2-digit", second: "2-digit"})
+
+  const dbRes = await db.collection('Feedback').doc(`${dateOfFeedback}`).set(data, {merge: true})
+
+  res.status(200).json({ "message": "Success"})
+})
+
 app.post('/checkout-session/:plan', async (req, res) => {
   //steps:
   //assign id, mode, line_items, and quantity_type (this is for the status of sub and pre calls)
