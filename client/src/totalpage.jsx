@@ -7,6 +7,7 @@ import Updates from './components/updates'
 import VibeSection from './components/vibesection'
 import ColorChanger from './components/colorchanger'
 import BillingPlanning from './components/billingplanning'
+import Feedback from './components/feedback'
 
 function TotalPage() {
 
@@ -30,7 +31,8 @@ function TotalPage() {
       <Updates />
       <VibeSection vibeCheckout={vibeCheckout} setVibeCheckout={setVibeCheckout}/>
       <BillingPlanning vibeCheckout={vibeCheckout}/>
-    </ColorChanger>   
+    </ColorChanger>
+    <Feedback />
    </>
   )
 }
